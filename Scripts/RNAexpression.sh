@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Change working directory
-cd data
+cd ../Data
 
 
 # STEP 1: Run fastqc
 mkdir Fastqc
-fastqc data/*.fastq -o Fastqc/
+fastqc *.fastq -o Fastqc/
 
 # Multi QC
 multiqc Fastqc/ --outdir multiqcreports --filename report
@@ -43,8 +43,8 @@ rm mapped/*.sam
 
 
 #Get gtf file
-#wget https://ftp.ensembl.org/pub/release-108/gtf/bos_taurus/Bos_taurus.ARS-UCD1.2.108.chr.gtf.gz
-#gunzip Bos_taurus.ARS-UCD1.2.108.chr.gtf.gz
+wget https://ftp.ensembl.org/pub/release-108/gtf/bos_taurus/Bos_taurus.ARS-UCD1.2.108.chr.gtf.gz
+gunzip Bos_taurus.ARS-UCD1.2.108.chr.gtf.gz
 
 
 #Step 3: Trancsript Assembly using Stringtie

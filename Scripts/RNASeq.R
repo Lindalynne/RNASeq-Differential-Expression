@@ -16,15 +16,14 @@ library(GenomicRanges)
 library(viridis)
 
 
-#Create phenotype data from the sample information
-
+#Create a dataframe of phenotype data from the  data description.
 pheno_data<-data.frame(
   Sample= c("SRR13107018", "SRR13107019", "SRR13107020", "SRR13107021", "SRR13107022", "SRR13107023"),
   Breed = c("Japanese black cattle", "Japanese black cattle", "Japanese black cattle", "Chinese Red Steppes cattle", "Chinese Red Steppes cattle", "Chinese Red Steppes cattle"))
 
 
 #Load the expression data using ballgown
-bg_chrX <- ballgown(dataDir="data/ballgown",samplePattern="SRR",pData=pheno_data)
+bg_chrX <- ballgown(dataDir="Data/ballgown",samplePattern="SRR",pData=pheno_data)
 
 
 #filtering out transcripts with low variance in order done to remove some genes that have few counts. Filtering improves the statistical power of differential expression analysis. 
@@ -73,13 +72,13 @@ subset_transcripts <- subset(de_transcripts,de_transcripts$qval<0.05)
 #do same for the genes
 subset_genes <- subset(de_genes,de_genes$qval<0.05)
 
-dir.create('plots')
+dir.create('Result plots')
 
 print('generating plots')
 
 
 #gene expression for a isoforms of gene PARP11
-png('plots/PARP11.png')
+png('Result plots/PARP11.png')
 myplot=plotTranscripts(ballgown::geneIDs(bg_chrX)[ballgown::geneNames(bg_chrX) == "PARP11"], bg_chrX, main=c('Gene PARP11 in sample SRR13107019'), sample=c('SRR13107019'))
 print(myplot)
 dev.off()
@@ -97,7 +96,7 @@ de_genes$delabel[de_genes$diffexpressed != "NO"] <- de_genes$id[de_genes$diffexp
 
 options(ggrepel.max.overlaps = Inf)
 
-png('plots/volcano.png',width = 1800, height = 1000) #,width = 1800, height = 1000
+png('Result plots/volcano.png',width = 1800, height = 1000) #,width = 1800, height = 1000
 volcano=ggplot(data=de_genes, aes(x=log2fc, y=-log10(pval), col=diffexpressed, label=delabel)) +
   geom_point() + 
   theme_minimal() +
@@ -110,7 +109,7 @@ print(volcano)
 dev.off()
 #DONE
 
-png('plots/maplot.png',width = 1800, height = 1000)
+png('Result plots/maplot.png',width = 1800, height = 1000)
 de_transcripts$mean <- rowMeans(texpr(bg_chrX_filt))
 maplot=ggplot(de_transcripts, aes(log2(mean), log2(fc), colour = qval<0.05)) +
   scale_color_manual(values=c("#999999", "#FF0000")) +
@@ -125,7 +124,7 @@ dev.off()
 
 #get fpkm values 
 
-png('plots/heatmap_clustered.png')
+png('Result plots/heatmap_clustered.png')
 
 fpkm = gexpr(bg_chrX_filt)
 fpkm = log2(fpkm+1)
@@ -137,7 +136,7 @@ heatmap_image=pheatmap(hit_frame)
 print(heatmap_image)
 dev.off()
 
-png('plots/heatmap_unclustered.png')
+png('Result plots/heatmap_unclustered.png')
 heatmap_image=pheatmap(hit_frame,cluster_rows = F,cluster_cols=F)
 print(heatmap_image)
 dev.off()
