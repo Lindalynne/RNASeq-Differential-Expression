@@ -5,11 +5,17 @@ Comparative transcriptome profile of genes differentially expressed in longissim
 RNAseq samples from two cattle breeds i.e, Japanese black (Wagyu) cattle and Chinese Red Steppes cattle.
 
 Sample      Breed
+
 SRR13107018	Japanese black (Wagyu) cattle
+
 SRR13107019	Japanese black (Wagyu) cattle
+
 SRR13107020	Japanese black (Wagyu) cattle
+
 SRR13107021	Chinese Red Steppes cattle
+
 SRR13107022	Chinese Red Steppes cattle
+
 SRR13107023	Chinese Red Steppes cattle
 
 *** For practise, you can obtain the fastq files from NCBI SRA website using the `fastq-dump`command from the SRA Toolkit to download the data in FASTQ format and store it in the Data folder.
@@ -28,6 +34,6 @@ The abundance estimation files for each sample will be stored in the ballgown fo
 This script is used to analyze RNA-Seq data for differential expression between different breeds of cattle. It filters the data, performs statistical tests, and then creates visualizations (plots and heatmaps) for the results. 
 
 #### The RNASeq.R Script Input: 
-ballgown folder abundance estimation files.
+ballgown folder having the abundance estimation files.
 #### The RNASeq.R Script output:
 Results plots folder containing Visualization plots heatmaps.
