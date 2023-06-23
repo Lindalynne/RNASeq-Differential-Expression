@@ -4,19 +4,19 @@ Comparative transcriptome profile of genes differentially expressed in longissim
 ## Data Description.
 RNAseq samples from two cattle breeds i.e, Japanese black (Wagyu) cattle and Chinese Red Steppes cattle.
 
-Sample      Breed
+Sample-     Breed
 
-SRR13107018	Japanese black (Wagyu) cattle
+SRR13107018-    Japanese black (Wagyu) cattle
 
-SRR13107019	Japanese black (Wagyu) cattle
+SRR13107019-    Japanese black (Wagyu) cattle
 
-SRR13107020	Japanese black (Wagyu) cattle
+SRR13107020-	Japanese black (Wagyu) cattle
 
-SRR13107021	Chinese Red Steppes cattle
+SRR13107021-	Chinese Red Steppes cattle
 
-SRR13107022	Chinese Red Steppes cattle
+SRR13107022-	Chinese Red Steppes cattle
 
-SRR13107023	Chinese Red Steppes cattle
+SRR13107023-	Chinese Red Steppes cattle
 
 *** For practise, you can obtain the fastq files from NCBI SRA website using the `fastq-dump`command from the SRA Toolkit to download the data in FASTQ format and store it in the Data folder.
 
